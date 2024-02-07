@@ -1,20 +1,39 @@
 package com.amigos;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
 public class Customer {
 
+    @Id
+    @SequenceGenerator (
+            name = "customer_id_generator",
+            sequenceName = "customer_id_generator",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "customer_id_generator"
+    )
+
+    private int id;
     private String name;
     private String email;
     private int age;
     private double savings;
 
-    public Customer(String name, String email, int age, double savings) {
+
+    public Customer(int id, String name, String email, int age, double savings) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
         this.savings = savings;
     }
+
+    public Customer() {}
 
     public String getEmail() {
         return email;

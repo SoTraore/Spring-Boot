@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 class GreetingController {
 
-    @GetMapping("/")
+    @GetMapping("/greet")
     public GreetResponse greet() {
         Person p = new Person("Alex", 28, 30_000); // Added missing semicolon
         GreetResponse res = new GreetResponse("Hello", List.of("Java", "JS", "Golang", "Swift"), p);
